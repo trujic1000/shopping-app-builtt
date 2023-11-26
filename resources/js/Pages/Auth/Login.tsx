@@ -52,7 +52,7 @@ export default function Login() {
                     </div>
 
                     <div className="mt-4">
-                        <InputLabel htmlFor="password" value="Lozinka" />
+                        <InputLabel htmlFor="password" value="Sifra" />
 
                         <TextInput
                             id="password"
