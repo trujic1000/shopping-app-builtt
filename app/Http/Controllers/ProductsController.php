@@ -11,8 +11,10 @@ class ProductsController extends Controller
     public function index()
     {
         $products = Product::all();
+        $user = auth()->user()->load('cart.products');
+        $cart = $user->cart;
 
-        return Inertia::render('Products', ['products' => $products]);
+        return Inertia::render('Products', ['products' => $products, 'cart' => $cart]);
     }
 
     public function create()

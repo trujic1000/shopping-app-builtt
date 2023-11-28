@@ -3,7 +3,7 @@ import { Head } from '@inertiajs/react';
 import { PageProps } from '@/types';
 import Product from '@/Components/Product';
 
-type ProductType = {
+export type TProduct = {
     id: number;
     name: string;
     full_price: number;
@@ -11,10 +11,23 @@ type ProductType = {
     img_path: string;
 };
 
-export default function Products({
-    auth,
-    products,
-}: PageProps & { products: ProductType[] }) {
+type TCartProduct = {
+    pivot: {
+        cart_id: number;
+        product_id: number;
+        quantity: number;
+    };
+} & TProduct;
+
+export type TCart = {
+    id: number;
+    user_id: number;
+    products: TCartProduct[];
+};
+
+type Props = PageProps & { products: TProduct[]; cart: TCart };
+
+export default function Products({ auth, products, cart }: Props) {
     return (
         <AuthenticatedLayout user={auth.user}>
             <Head title='Products' />
@@ -31,11 +44,8 @@ export default function Products({
                         {products.map((product) => (
                             <Product
                                 key={product.id}
-                                id={product.id}
-                                name={product.name}
-                                fullPrice={product.full_price}
-                                currentPrice={product.current_price}
-                                imgPath={product.img_path}
+                                {...product}
+                                cart={cart}
                             />
                         ))}
                     </div>

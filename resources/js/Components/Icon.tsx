@@ -52,7 +52,7 @@ export default function Icon({ name, variant = 'black' }: IconProps) {
                     fill='none'
                     xmlns='http://www.w3.org/2000/svg'
                 >
-                    <g clip-path='url(#clip0_1_584)'>
+                    <g clipPath='url(#clip0_1_584)'>
                         <path
                             fillRule='evenodd'
                             clipRule='evenodd'
@@ -80,7 +80,7 @@ export default function Icon({ name, variant = 'black' }: IconProps) {
                     fill='none'
                     xmlns='http://www.w3.org/2000/svg'
                 >
-                    <g clip-path='url(#clip0_1_581)'>
+                    <g clipPath='url(#clip0_1_581)'>
                         <path
                             fillRule='evenodd'
                             clipRule='evenodd'

@@ -20,4 +20,9 @@ class Product extends Model
         'current_price',
         'img_path'
     ];
+
+    public function cart()
+    {
+        return $this->belongsTo(Cart::class)->withPivot('quantity');
+    }
 }
