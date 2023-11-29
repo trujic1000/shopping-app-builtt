@@ -21,17 +21,17 @@ class Cart extends Model
         return $this->belongsToMany(Product::class)->withPivot('quantity');
     }
 
-    public function addToCart($userId, $productId, $quantity = 1)
+    public function addToCart($productId, $quantity = 1)
     { 
         $this->products()->attach($productId, ['quantity' => $quantity]);
     }
 
-    public function incrementQuantity($userId, $productId, $quantity = 1)
+    public function incrementQuantity($productId, $quantity = 1)
     {
         $this->products()->updateExistingPivot($productId, ['quantity' => \DB::raw("quantity + $quantity")]);
     }
 
-    public function decrementQuantity($userId, $productId, $quantity = 1)
+    public function decrementQuantity($productId, $quantity = 1)
     {
         $pivot = $this->products()->where('products.id', $productId)->first()->pivot;
 
@@ -47,13 +47,8 @@ class Cart extends Model
         }
     }
 
-    public function removeFromCart($userId, $productId)
+    public function removeFromCart($productId)
     {
-        self::where(['user_id' => $userId, 'product_id' => $productId])->delete();
-    }
-
-    public function productIsInCart($userId, $productId)
-    {
-        return self::where(['user_id' => $userId, 'product_id' => $productId]);
+        $this->products()->detach($productId);
     }
 }

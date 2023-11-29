@@ -5,7 +5,7 @@ import Product from '@/Components/Product';
 
 type Props = PageProps & { products: ProductType[]; cart: Cart };
 
-export default function Products({ auth, products, cart }: Props) {
+export default function ProductsPage({ auth, products, cart }: Props) {
     return (
         <AuthenticatedLayout user={auth.user} cart={cart}>
             <Head title='Products' />

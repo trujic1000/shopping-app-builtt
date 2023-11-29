@@ -21,7 +21,7 @@ export type Product = {
     img_path: string;
 };
 
-type CartProduct = {
+export type CartProduct = {
     pivot: {
         cart_id: number;
         product_id: number;

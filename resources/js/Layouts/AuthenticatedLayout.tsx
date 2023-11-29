@@ -35,12 +35,14 @@ export default function Authenticated({
                         </div>
 
                         <div className='hidden sm:flex sm:items-center sm:ms-6'>
-                            <Link href='/cart' className='relative'>
-                                <Icon name='cart' />
-                                <span className='text-[10px] absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 mt-0.5'>
-                                    {itemsInCart}
-                                </span>
-                            </Link>
+                            {itemsInCart > 0 && (
+                                <Link href='/cart' className='relative'>
+                                    <Icon name='cart' />
+                                    <span className='text-[10px] absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 mt-0.5'>
+                                        {itemsInCart}
+                                    </span>
+                                </Link>
+                            )}
                             <div className='ms-3 relative'>
                                 <Dropdown>
                                     <Dropdown.Trigger>
@@ -86,12 +88,14 @@ export default function Authenticated({
                         </div>
 
                         <div className='-me-2 flex gap-2 items-center sm:hidden'>
-                            <Link href='/cart' className='relative'>
-                                <Icon name='cart' />
-                                <span className='text-[10px] absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 mt-0.5'>
-                                    {itemsInCart}
-                                </span>
-                            </Link>
+                            {itemsInCart > 0 && (
+                                <Link href='/cart' className='relative'>
+                                    <Icon name='cart' />
+                                    <span className='text-[10px] absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 mt-0.5'>
+                                        {itemsInCart}
+                                    </span>
+                                </Link>
+                            )}
 
                             <button
                                 onClick={() =>

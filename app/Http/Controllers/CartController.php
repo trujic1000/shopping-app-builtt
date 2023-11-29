@@ -10,13 +10,10 @@ class CartController extends Controller
 {
     public function index()
     {
-        $user = auth()->user();
+        $user = auth()->user()->load('cart.products');
         $cart = $user->cart;
 
-        return Inertia::render('Cart', [
-            'user' => $user,
-            'cart' => $cart,
-        ]);
+        return Inertia::render('Cart', ['cart' => $cart]);
     }
 
     public function addToCart(Request $request)
@@ -32,7 +29,7 @@ class CartController extends Controller
             $user->cart()->save($cart);
         }
 
-        $cart->addToCart($user->id, $productId);
+        $cart->addToCart($productId);
 
         return redirect()->back();
     }
@@ -45,7 +42,7 @@ class CartController extends Controller
         $cart = $user->cart;
 
         if ($cart) {
-            $cart->incrementQuantity($user->id, $productId);
+            $cart->incrementQuantity($productId);
         }
 
         return redirect()->back();
@@ -59,7 +56,7 @@ class CartController extends Controller
         $cart = $user->cart;
 
         if ($cart) {
-            $cart->decrementQuantity($user->id, $productId);
+            $cart->decrementQuantity($productId);
         }
 
         return redirect()->back();
@@ -70,7 +67,11 @@ class CartController extends Controller
         $user = auth()->user();
         $productId = $request->input('productId');
 
-        Cart::removeFromCart($user->id, $productId);
+        $cart = $user->cart;
+
+        if ($cart) {
+            $cart->removeFromCart($productId);
+        }
 
         return redirect()->back();
     }
