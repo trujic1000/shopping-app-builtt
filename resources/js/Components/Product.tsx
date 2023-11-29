@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { router } from '@inertiajs/react';
 import Icon from './Icon';
-import { TCart, TProduct } from '@/Pages/Products';
+import { Cart, Product as ProductType } from '@/types';
 
-type Props = TProduct & {
-    cart: TCart;
+type Props = ProductType & {
+    cart: Cart;
 };
 
 export default function Product({

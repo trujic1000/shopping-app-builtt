@@ -3,15 +3,23 @@ import ApplicationLogo from '@/Components/ApplicationLogo';
 import Dropdown from '@/Components/Dropdown';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
 import { Link } from '@inertiajs/react';
-import { User } from '@/types';
+import { User, Cart } from '@/types';
 import Icon from '@/Components/Icon';
+
+type Props = {
+    user: User;
+    cart: Cart;
+};
 
 export default function Authenticated({
     user,
+    cart,
     children,
-}: PropsWithChildren<{ user: User }>) {
+}: PropsWithChildren<Props>) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
         useState(false);
+
+    const itemsInCart = cart.products.length;
 
     return (
         <div className='min-h-screen bg-white'>
@@ -30,7 +38,7 @@ export default function Authenticated({
                             <Link href='/cart' className='relative'>
                                 <Icon name='cart' />
                                 <span className='text-[10px] absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 mt-0.5'>
-                                    12
+                                    {itemsInCart}
                                 </span>
                             </Link>
                             <div className='ms-3 relative'>
@@ -81,7 +89,7 @@ export default function Authenticated({
                             <Link href='/cart' className='relative'>
                                 <Icon name='cart' />
                                 <span className='text-[10px] absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 mt-0.5'>
-                                    12
+                                    {itemsInCart}
                                 </span>
                             </Link>
 

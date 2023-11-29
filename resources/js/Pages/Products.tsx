@@ -1,35 +1,13 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
-import { PageProps } from '@/types';
+import { PageProps, Product as ProductType, Cart } from '@/types';
 import Product from '@/Components/Product';
 
-export type TProduct = {
-    id: number;
-    name: string;
-    full_price: number;
-    current_price: number;
-    img_path: string;
-};
-
-type TCartProduct = {
-    pivot: {
-        cart_id: number;
-        product_id: number;
-        quantity: number;
-    };
-} & TProduct;
-
-export type TCart = {
-    id: number;
-    user_id: number;
-    products: TCartProduct[];
-};
-
-type Props = PageProps & { products: TProduct[]; cart: TCart };
+type Props = PageProps & { products: ProductType[]; cart: Cart };
 
 export default function Products({ auth, products, cart }: Props) {
     return (
-        <AuthenticatedLayout user={auth.user}>
+        <AuthenticatedLayout user={auth.user} cart={cart}>
             <Head title='Products' />
 
             <div className='py-12'>
