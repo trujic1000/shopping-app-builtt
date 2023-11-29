@@ -89,4 +89,7 @@ Make sure you have the following installed on your machine:
 
 ## Additional Configuration
 
--   [Any additional steps or configurations needed]
+To access the application with a test user account, you can use the following credentials:
+
+- **Email:** admin@builtt.com
+- **Password:** admin123
