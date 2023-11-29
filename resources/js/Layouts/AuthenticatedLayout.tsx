@@ -9,7 +9,7 @@ import NavLink from '@/Components/NavLink';
 
 type Props = {
     user: User;
-    cart: Cart;
+    cart?: Cart;
 };
 
 export default function Authenticated({
@@ -21,7 +21,7 @@ export default function Authenticated({
         useState(false);
 
     const isActive = route().current('products' + '*');
-    const itemsInCart = cart.products.length;
+    const itemsInCart = cart?.products.length;
 
     return (
         <div className='min-h-screen bg-white'>
@@ -44,7 +44,7 @@ export default function Authenticated({
                         </div>
 
                         <div className='hidden sm:flex sm:items-center sm:ms-6'>
-                            {itemsInCart > 0 && (
+                            {itemsInCart && itemsInCart > 0 && (
                                 <Link href='/cart' className='relative'>
                                     <Icon name='cart' />
                                     <span className='text-[10px] absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 mt-0.5'>
@@ -97,7 +97,7 @@ export default function Authenticated({
                         </div>
 
                         <div className='-me-2 flex gap-2 items-center sm:hidden'>
-                            {itemsInCart > 0 && (
+                            {itemsInCart && itemsInCart > 0 && (
                                 <Link href='/cart' className='relative'>
                                     <Icon name='cart' />
                                     <span className='text-[10px] absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 mt-0.5'>

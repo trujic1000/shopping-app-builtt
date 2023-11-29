@@ -4,7 +4,7 @@ import Icon from './Icon';
 import { Cart, Product as ProductType } from '@/types';
 
 type Props = ProductType & {
-    cart: Cart;
+    cart?: Cart;
 };
 
 export default function Product({
@@ -16,8 +16,8 @@ export default function Product({
     cart,
 }: Props) {
     const [isHovered, setIsHovered] = useState(false);
-    const isInCart = cart.products.some((product) => product.id === id);
-    const quantity = cart.products.find((product) => product.id === id)?.pivot
+    const isInCart = cart?.products.some((product) => product.id === id);
+    const quantity = cart?.products.find((product) => product.id === id)?.pivot
         .quantity;
 
     const addToCart = () => {

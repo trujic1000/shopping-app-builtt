@@ -3,7 +3,7 @@ import { Head } from '@inertiajs/react';
 import { PageProps, Product as ProductType, Cart } from '@/types';
 import Product from '@/Components/Product';
 
-type Props = PageProps & { products: ProductType[]; cart: Cart };
+type Props = PageProps & { products: ProductType[]; cart?: Cart };
 
 export default function ProductsPage({ auth, products, cart }: Props) {
     return (
