@@ -63,6 +63,7 @@ Make sure you have the following installed on your machine:
 
     ```bash
     php artisan db:seed --class=ProductsTableSeeder
+    php artisan db:seed --class=UsersTableSeeder
     ```
 
 10. **Create a symbolic link to make the storage accessible from the web:**
@@ -91,5 +92,5 @@ Make sure you have the following installed on your machine:
 
 To access the application with a test user account, you can use the following credentials:
 
-- **Email:** admin@builtt.com
-- **Password:** admin123
+-   **Email:** admin@builtt.com
+-   **Password:** admin123
