@@ -18,7 +18,10 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): Response
     {
+        $user = auth()->user()->load('cart.products');
+        $cart = $user->cart;
         return Inertia::render('Profile/Edit', [
+            'cart' => $cart,
             'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
             'status' => session('status'),
         ]);

@@ -2,9 +2,10 @@ import { useState, PropsWithChildren } from 'react';
 import ApplicationLogo from '@/Components/ApplicationLogo';
 import Dropdown from '@/Components/Dropdown';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
-import { Link } from '@inertiajs/react';
+import { Link, router } from '@inertiajs/react';
 import { User, Cart } from '@/types';
 import Icon from '@/Components/Icon';
+import NavLink from '@/Components/NavLink';
 
 type Props = {
     user: User;
@@ -19,6 +20,7 @@ export default function Authenticated({
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
         useState(false);
 
+    const isActive = route().current('products' + '*');
     const itemsInCart = cart.products.length;
 
     return (
@@ -32,6 +34,13 @@ export default function Authenticated({
                                     <ApplicationLogo className='block h-9 w-auto fill-current text-gray-800' />
                                 </Link>
                             </div>
+                            <NavLink
+                                href='/products'
+                                active={isActive}
+                                className='ml-8'
+                            >
+                                Products
+                            </NavLink>
                         </div>
 
                         <div className='hidden sm:flex sm:items-center sm:ms-6'>

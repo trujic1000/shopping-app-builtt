@@ -14,7 +14,7 @@ export default function CartPage({ auth, cart }: Props) {
             <div className='py-12'>
                 <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
                     <h1 className='text-xl font-bold leading-6'>Tvoja korpa</h1>
-                    <div className='mt-8 grid gap-14 grid-cols-[2fr,1fr]'>
+                    <div className='mt-8 grid gap-14 md:grid-cols-[2fr,1fr]'>
                         <div className='grid divide-y divide-gray-400'>
                             {cart.products.map((product) => (
                                 <CartProduct key={product.id} {...product} />

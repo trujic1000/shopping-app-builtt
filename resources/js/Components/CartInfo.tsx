@@ -19,7 +19,7 @@ export default function CartInfo({ cart }: Props) {
     const finalPrice = totalFullPrice - totalDiscount;
 
     return (
-        <div className='p-6 bg-gray-100'>
+        <div className='px-6 pt-6 pb-24 bg-gray-100'>
             <h3 className='text-lg font-bold leading-6'>Tvoja narudžbina</h3>
             <div className='mt-7 flex justify-between items-center'>
                 <span>Ukupno</span>
